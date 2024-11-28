@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar/Navbar";
 function HomeLayout({ children }) {
-  console.log(children);
   return (
     <div>
       <Navbar />

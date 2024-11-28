@@ -6,14 +6,20 @@ function Home() {
   return (
     <HomeLayout>
       <Banner />
-      <SliderList heading="Trending" options={["Today", "This Week"]} active="Today" />
       <SliderList
-        heading="What's Popular"
-        options={["Streaming", "On TV", "For Rent", "In Theatres"]} active="On TV"
+        heading="Trending"
+        options={["Today", "This Week"]}
+        term="trending"
       />
       <SliderList
-        heading="Free To Watch"
-        options={["Movies","TV"]} active="TV"
+        heading="Movies"
+        options={["Now Playing", "Popular", "Top Rated", "Upcoming"]}
+        term="movie"
+      />
+      <SliderList
+        heading="TV Shows"
+        options={["Airing Today", "On The Air", "Popular", "Top Rated"]}
+        term="tv"
       />
     </HomeLayout>
   );

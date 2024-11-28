@@ -1,15 +1,19 @@
-function SliderCard() {
+function SliderCard({ item }) {
+  console.log(item);
   return (
     <a className="w-[150px] min-w-[150px] rounded">
       <div>
         <img
-          src="https://media.themoviedb.org/t/p/w220_and_h330_face/m5x8D0bZ3eKqIVWZ5y7TnZ2oTVg.jpg"
+          src={`https://media.themoviedb.org/t/p/w220_and_h330_face/${item?.backdrop_path}.jpg`}
           className="rounded-lg"
+          loading="lazy"
         />
       </div>
       <div className="px-2 py-4">
-        <h2 className=" font-bold">Conclave</h2>
-        <p>Oct 25, 2024</p>
+        <h2 className=" font-bold">
+          {item?.original_title || item?.name}
+        </h2>
+        <p>{item?.release_date || item?.first_air_date}</p>
       </div>
     </a>
   );

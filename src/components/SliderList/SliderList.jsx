@@ -1,7 +1,30 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 import SliderCard from "./SliderCard";
 import SliderListHeader from "./SliderListHeader";
+import getApiRoute from "../../utils/getApiRoute";
 
-function SliderList({ heading, options, active }) {
+function SliderList({ heading, options, term }) {
+  const [list, setList] = useState([]);
+  const [option, setOption] = useState(options[0]);
+
+  const fetchData = async () => {
+    const data = await axios.get(
+      `${import.meta.env.VITE_BASE_URL}/${getApiRoute(term, option)}?api_key=${
+        import.meta.env.VITE_API_KEY
+      }`
+    );
+    setList(data?.data?.results);
+  };
+
+  const handleChangeOption = (option) => {
+    setOption(option);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [option]);
+
   return (
     <div
       className={`py-8 scroller relative ${
@@ -10,27 +33,15 @@ function SliderList({ heading, options, active }) {
       }`}
     >
       <div className="px-8">
-        <SliderListHeader heading={heading} options={options} active={active} />
+        <SliderListHeader
+          heading={heading}
+          options={options}
+          handleChangeOption={handleChangeOption}
+          option={option}
+        />
       </div>
       <div className="flex gap-4 overflow-x-scroll px-8 transition-all">
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
+        {list && list.map((item) => <SliderCard key={item.id} item={item} />)}
       </div>
     </div>
   );
