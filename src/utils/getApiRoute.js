@@ -1,7 +1,7 @@
 export default function getApiRoute(term, option) {
   let route = "";
+  term = term.toLowerCase();
   option = option.toLowerCase();
-  console.log(term, option);
   if (term === "trending") {
     if (option === "today") {
       route += "trending/all/day";
@@ -28,6 +28,9 @@ export default function getApiRoute(term, option) {
     } else {
       route += "tv/top_rated";
     }
+  }
+  else if(term === "people"){
+    route += "person/popular"
   }
   return route;
 }

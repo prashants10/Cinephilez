@@ -2,17 +2,18 @@ import { useNavigate } from "react-router-dom";
 function DropdownOption({ option, category }) {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     let route = category.toLowerCase();
     option = option.toLowerCase().replaceAll(" ", "_");
     if (option === "popular") {
       option = "";
     }
     if (option) {
-      navigate(`${route}/${option}`);
+      navigate(`../${route}/${option}`);
     } else {
-      navigate(`${route}`);
+      navigate(`../${route}`);
     }
+    e.target.parentElement.style.display = "none";
   };
 
   return (

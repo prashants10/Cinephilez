@@ -4,6 +4,7 @@ function HomeLayout({ children }) {
     <div>
       <Navbar />
       <div className="px-[6rem]">{children}</div>
+      
     </div>
   );
 }
