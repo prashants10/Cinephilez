@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #iframe-container {
+        width: 100vw;
+        height: 100vh;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="iframe-container"></div>
+    <script>
+      var container = "iframe-container";
+      var div = document.getElementById(container);
+      var ifrm = document.createElement("iframe");
+      ifrm.setAttribute("src", `https://visitsunshinecoast.beta.trvlr.ai`);
+      ifrm.style.flexGrow = "1";
+      ifrm.setAttribute("frameBorder", "0");
+      div.appendChild(ifrm);
+    </script>
+  </body>
+</html>
